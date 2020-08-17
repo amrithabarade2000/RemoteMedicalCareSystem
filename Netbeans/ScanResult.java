@@ -196,7 +196,7 @@ public class ScanResult extends javax.swing.JFrame {
 
     private void OpenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpenActionPerformed
         // TODO add your handling code here:
-        JFileChooser chooser = new JFileChooser("C:/Users/Keerthana Sundaresan/Desktop/SHE");
+        JFileChooser chooser = new JFileChooser("C:/Users/abcd/Desktop/SHE");
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();
         String filename = f.getAbsolutePath();
@@ -276,7 +276,7 @@ public class ScanResult extends javax.swing.JFrame {
         String msg = new String();
         msg = reply.getText();
         try {
-            JavaMailUtil.sendMail("keerthus11@gmail.com", "keerthanasundaresan11@gmail.com", msg, "Scan Results");
+            JavaMailUtil.sendMail("abcd@gmail.com", "xyz@gmail.com", msg, "Scan Results");
         } catch (Exception ex) {
             Logger.getLogger(ScanResult.class.getName()).log(Level.SEVERE, null, ex);
         }
