@@ -16,12 +16,16 @@ public class DoctorLogin extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        //JTextField to enter the username
         TF_Uname1 = new javax.swing.JTextField();
+        //JButton to select login
         LogFormButton = new javax.swing.JButton();
         UnameLabel = new javax.swing.JLabel();
         PassLabel = new javax.swing.JLabel();
+        //JPasswordField to enter the password
         TF_Pass1 = new javax.swing.JPasswordField();
         LogFormTitle = new javax.swing.JLabel();
+        //JButton to select register
         RegFormButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -116,7 +120,7 @@ public class DoctorLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LogFormButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LogFormButtonActionPerformed
-        // TODO add your handling code here:
+        //Take the doctor's username and password and store it DName and DPass.
         DName = TF_Uname1.getText();
         DPass = String.valueOf(TF_Pass1.getPassword());
 
@@ -125,19 +129,25 @@ public class DoctorLogin extends javax.swing.JFrame {
         ResultSet rs;
 
         try {
+            //Establish a connection between the MySQL database and the Java application.
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "xxxx");
+            //The query stores the data of the doctor whose username = DName and paswword = Dpass from the table "doctor" in the "she_db" database.
             String query = ("SELECT * FROM she_db.doctor WHERE `dname` =? AND `password` =?");
 
+            //PreparedStatement ps executes the query
             ps = con.prepareStatement(query);
             ps.setString(1, DName);
             ps.setString(2, DPass);
+            //ResultSet rs stores the result when the query is executed
             rs = ps.executeQuery();
 
             if (rs.next()) {
                 FUtil.sendDocData(DName,DPass);
+                //The login page is disabled
                 this.setVisible(false);
             } else {
+                //"Incorrect Username or Password" meassage is displayed when the ResultSet is empty
                 JOptionPane.showMessageDialog(null, "Incorrect Username or Password");
             }
 
@@ -155,9 +165,11 @@ public class DoctorLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TF_Pass1ActionPerformed
 
+    //EventHandler
     private void RegFormButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegFormButton3ActionPerformed
         // TODO add your handling code here:
         FrontPage FP = new FrontPage();
+        //FrontPage is enabled to register
         FP.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RegFormButton3ActionPerformed
