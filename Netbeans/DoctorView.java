@@ -17,7 +17,9 @@ public class DoctorView extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        //JTextField to enter the Doctor's name
         TF_DName = new javax.swing.JTextField();
+        //JTextField to enter the Doctor's ID
         TF_DID = new javax.swing.JTextField();
         jLabel23 = new javax.swing.JLabel();
         TF_Spec = new javax.swing.JTextField();
@@ -190,6 +192,7 @@ public class DoctorView extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         FrontPage FP= new FrontPage();
+        //The FrontPage is enabled
         FP.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
