@@ -24,11 +24,16 @@ public class Appointment extends javax.swing.JFrame {
         try {
             Connection conn = null;
             PreparedStatement pst;
+            //Establish the database connection 
             Class.forName("com.mysql.cj.jdbc.Driver");
+            //Database name = "she_db", username = "user1", password = ""
             conn = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "");
 
+            //Query to select distinct speciality from the table doctor
             String sql = ("select distinct speciality from she_db.doctor");
+            //PreparedStatement pst to execute the query
             pst = conn.prepareStatement(sql);
+            //ResultSet rs to hold the result when the query is executed
             ResultSet rs = pst.executeQuery();
             while (rs.next()) {
                 String reg1 = rs.getString("speciality");
@@ -49,18 +54,26 @@ public class Appointment extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        //JComboBox to select the DoctorID
         did = new javax.swing.JComboBox<>();
+        //JComboBox to select the specialist
         dtype = new javax.swing.JComboBox<>();
+        //JComboBox to select the slot
         slot = new javax.swing.JComboBox<>();
+        //JtextField to enter the PatientID
         pid = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        //JButton to select Appointment
         app = new javax.swing.JButton();
+        //JButton to select show
         show = new javax.swing.JButton();
+        //JXDatePicker to select the date
         dat1 = new org.jdesktop.swingx.JXDatePicker();
+        //JButton to select register
         RegFormButton3 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
@@ -218,20 +231,26 @@ public class Appointment extends javax.swing.JFrame {
     private void dtypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dtypeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_dtypeActionPerformed
-
+    
+    
     private void showActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showActionPerformed
         // TODO add your handling code here:
         try {
             Connection con = null;
             PreparedStatement pstmst;
+            //Establish the database connection 
             Class.forName("com.mysql.cj.jdbc.Driver");
+            //Database name = "she_db", username = "user1", password = ""
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "");
 
+            //Query to select the doctor's name from the table doctor with the given speciality
             String q = ("select dname from she_db.doctor where `speciality`=?");
+            //PreparedStatement pstmst to execute the query
             pstmst = con.prepareStatement(q);
             String sp;
             sp = dtype.getSelectedItem().toString();
             pstmst.setString(1, sp);
+             //ResultSet rs to hold the result when the query is executed
             ResultSet rs = pstmst.executeQuery();
             did.removeAllItems();
 
@@ -259,7 +278,9 @@ public class Appointment extends javax.swing.JFrame {
             PreparedStatement pstmst;
             PreparedStatement pstmst1;
             PreparedStatement pstmst2;
+            //Establish the database connection
             Class.forName("com.mysql.cj.jdbc.Driver");
+            //Database name = "she_db", username = "user1", password = ""
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "");
 
             String q = ("insert into appointment values(?,?,?,?,?)");
@@ -291,6 +312,7 @@ public class Appointment extends javax.swing.JFrame {
             pstmst2 = con.prepareStatement(q2);
             pstmst2.setInt(1, id1);
 
+            //ResultSet rs to hold the result when the query is executed
             ResultSet rs1 = pstmst2.executeQuery();
             String fromEmail = new String();
             while (rs1.next()) {
