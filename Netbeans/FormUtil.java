@@ -15,12 +15,17 @@ public class FormUtil {
         ResultSet rs;
 
         try {
+            //Establish the database connection
             Class.forName("com.mysql.cj.jdbc.Driver");
+            //Database name = "she_db", username = "user1", password = "xxxx"
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "xxxx");
+            //Query to select the patientID, patientName, sex, bloodgroup, age, prescription, email from the table patient with the given patientname and password
             String sql = ("SELECT p_id,pname,sex,bloodgrp,age,prescription,email FROM she_db.patient WHERE `pname` =? AND `password` =?");
+            //PreparedStatement pa to execute the query
             ps = con.prepareStatement(sql);
             ps.setString(1, N);
             ps.setString(2, P);
+            //ResultSet rs to hold the result when the query is executed
             rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -52,6 +57,7 @@ public class FormUtil {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "xxxx");
+            //Query to select the doctorID, doctorName, sex, bloodgroup, age, prescription, email from the table doctor with the given doctorname and password
             String sql = ("SELECT d_id,dname,speciality FROM she_db.doctor WHERE `dname` =? AND `password` =?");
             ps = con.prepareStatement(sql);
             ps.setString(1, N);
@@ -81,6 +87,7 @@ public class FormUtil {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "xxxx");
+             //Query to select the patientID, patientName, sex, bloodgroup, age, prescription, email from the table patient with the given patientID
             String sql = ("SELECT p_id,pname,sex,bloodgrp,age,prescription,email FROM she_db.patient WHERE `p_id` =?");
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
@@ -114,6 +121,7 @@ public class FormUtil {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "xxxx");
+            //Query to select the doctorID, doctorName, speciality from the table patient with the given doctorID
             String sql = ("SELECT d_id,dname,speciality FROM she_db.doctor WHERE `d_id` =?");
             ps = con.prepareStatement(sql);
             ps.setInt(1, id);
