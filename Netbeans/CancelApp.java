@@ -30,11 +30,13 @@ public class CancelApp extends javax.swing.JFrame {
         jDialog1 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        //JTextField to enter the PatientID
         pid = new javax.swing.JTextField();
         getApp = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         AppT = new javax.swing.JTable();
         delc = new javax.swing.JButton();
+        //JButton to select register
         RegFormButton3 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
@@ -179,14 +181,19 @@ public class CancelApp extends javax.swing.JFrame {
 
         try {
             Connection con = null;
+            //Establish the database connection
             Class.forName("com.mysql.cj.jdbc.Driver");
+            //Database name = she_db, username = "user1", password = "xxxx"
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "xxxx");
             ResultSet rs;
             PreparedStatement pst;
-
+            
+            //Query to select the DoctorID, Speciality, Appointment Date and slot from the appointment table with the given PatientID
             String sql = "select d_id,speciality,date_of_app,slot from she_db.appointment where `p_id`=?";
+            //PreparedStatement pst executes the query
             pst = con.prepareStatement(sql);
             pst.setInt(1, id1);
+            //ResultSet rs stores the result when the query is executed
             rs = pst.executeQuery();
             int d;
             String t;
@@ -216,16 +223,21 @@ public class CancelApp extends javax.swing.JFrame {
     private void delcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delcActionPerformed
         // TODO add your handling code here:
         int row = AppT.getSelectedRow();
+        //Get the PatientID
         int p = Integer.parseInt(pid.getText());
         int d = (int) AppT.getModel().getValueAt(row, 0);
         Date dt = (Date) AppT.getModel().getValueAt(row, 2);
-        System.out.println("succuss");
+        System.out.println("success");
         try {
             Connection con = null;
+            //Establish the database connection
             Class.forName("com.mysql.cj.jdbc.Driver");
+            //Database name = she_db, username = "user1", password = "xxxx"
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "xxxx");
             PreparedStatement pst;
+            //Query to delete the record from the appointment table with the given PatientID, DoctorID and Appointment Date
             String sql = "delete from she_db.appointment where `p_id`=? and `d_id`=? and `date_of_app`=?";
+            //PreparedStatement pst executes the query
             pst = con.prepareStatement(sql);
             pst.setInt(1, p);
             pst.setInt(2, d);
