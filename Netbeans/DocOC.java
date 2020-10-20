@@ -27,6 +27,7 @@ public class DocOC extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        //variable declaration
         jTextField3 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -36,9 +37,13 @@ public class DocOC extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        //JTextField to enter the name
         name = new javax.swing.JTextField();
+        //JTextField to enter the age
         age = new javax.swing.JTextField();
+        //JTextField to enter the bg
         bg = new javax.swing.JTextField();
+        //JTextField to enter the gender
         gen = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
@@ -55,7 +60,9 @@ public class DocOC extends javax.swing.JFrame {
         jp = new javax.swing.JTextField();
         v = new javax.swing.JTextField();
         bn = new javax.swing.JTextField();
+        //JTextField to enter the DoctorID
         did = new javax.swing.JTextField();
+        //JComboBox to select the PatientID
         pid = new javax.swing.JComboBox<>();
         np = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -344,14 +351,19 @@ public class DocOC extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
             Connection con = null;
+            //Establish the database connection
             Class.forName("com.mysql.cj.jdbc.Driver");
+            //Database name = "she_db", username = "user1", password = "xxxx"
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "xxxx");
             ResultSet rs;
             PreparedStatement pst;
 
+            //Query to select patientname, age, sex, bloodgroup and prescription from the table patient with the given PatientID
             String sql = "select pname,age,sex,bloodgrp,prescription from she_db.patient where `p_id`=?";
+            //PreparedStatement pst to execute the query
             pst = con.prepareStatement(sql);
             pst.setInt(1, Integer.parseInt(pid.getSelectedItem().toString()));
+            //ResultSet rs holds the result when the query is executed
             rs = pst.executeQuery();
             String nam = "";
             int a = 0;
@@ -373,9 +385,12 @@ public class DocOC extends javax.swing.JFrame {
             ResultSet rs1;
             PreparedStatement pst1;
 
+            //Query to select temperature, headache, vomit, jointpain, blnose, sleep from the table onlinecon with the given PatientID
             String sql1 = "select temp,headache,vomit,jointpain,blnose,sleep from she_db.onlinecon where `p_id`=?";
+            //PreparedStatement pst1 to execute the query
             pst1 = con.prepareStatement(sql1);
             pst1.setInt(1, Integer.parseInt(pid.getSelectedItem().toString()));
+            //ResultSet rs1 holds the result when the query is executed
             rs1 = pst1.executeQuery();
             String ha = "";
             int tp = 0;
@@ -407,12 +422,16 @@ public class DocOC extends javax.swing.JFrame {
         try {
             Connection con = null;
             PreparedStatement pstmst;
+            //Establish the database connection
             Class.forName("com.mysql.cj.jdbc.Driver");
+            //Database name = "she_db", username = "user1", password = "xxxx"
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "xxxx");
 
+            //Query to select PatientID from the table onlinecon with the given DoctorID
             String q = "select p_id from she_db.onlinecon where `d_id`=?";
             pstmst = con.prepareStatement(q);
             pstmst.setInt(1, id1);
+            //ResultSet rs holds the result when the query is executed
             ResultSet rs = pstmst.executeQuery();
             pid.removeAllItems();
             while (rs.next()) {
@@ -432,6 +451,7 @@ public class DocOC extends javax.swing.JFrame {
             PreparedStatement pstmst;
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "xxxx");
+            //Query to delete the record from the table onlinecon with the given PatientID
             String q = "delete from she_db.onlinecon where `p_id`=?";
             pstmst = con.prepareStatement(q);
             pstmst.setInt(1, Integer.parseInt(pid.getSelectedItem().toString()));
@@ -444,6 +464,7 @@ public class DocOC extends javax.swing.JFrame {
             PreparedStatement pst;
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost/she_db", "user1", "xxxx");
+            //Query to udate the presiction value in the table onlinecon with the given PatientID
             String x = "update she_db.patient set prescription=? where `p_id`=?";
             pst = conn.prepareStatement(x);
             pst.setString(1, np.getText().toString());
