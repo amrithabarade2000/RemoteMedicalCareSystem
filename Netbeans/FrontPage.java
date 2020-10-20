@@ -11,10 +11,13 @@ public class FrontPage extends javax.swing.JFrame {
         LoginTitle = new javax.swing.JLabel();
         DonorPanel = new javax.swing.JPanel();
         LoginButton = new javax.swing.JButton();
+        //JButton to select register
         RegButton = new javax.swing.JButton();
         DonorField = new javax.swing.JLabel();
+        //JButton to select search
         SearchButton1 = new javax.swing.JButton();
         DonorPanel1 = new javax.swing.JPanel();
+        //JButton to select login
         LoginButton1 = new javax.swing.JButton();
         DonorField1 = new javax.swing.JLabel();
 
@@ -158,8 +161,8 @@ public class FrontPage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        // TODO add your handling code here:
         PatientLogin PL= new PatientLogin();
+        //The PatientLogin page is enabled
         PL.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_LoginButtonActionPerformed
@@ -170,8 +173,8 @@ public class FrontPage extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchButton1ActionPerformed
 
     private void RegButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegButtonActionPerformed
-        // TODO add your handling code here:
         RegistrationForm RF= new RegistrationForm();
+        //The RegistrationForm is enabled
         RF.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_RegButtonActionPerformed
