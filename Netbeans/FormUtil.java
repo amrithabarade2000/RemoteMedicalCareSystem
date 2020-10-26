@@ -1,4 +1,4 @@
-
+//FormUtil.java allows the doctor and the patient to check their profiles with the given username and password
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
