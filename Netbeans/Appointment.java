@@ -1,4 +1,4 @@
-
+//Appointment.java allows the user to book an appointment with a doctor of a given speciality
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -286,6 +286,7 @@ public class Appointment extends javax.swing.JFrame {
             String q = ("insert into appointment values(?,?,?,?,?)");
             pstmst = con.prepareStatement(q);
 
+            //Select the DoctorID from the table doctor with the given DoctorName
             String q1 = ("select d_id from she_db.doctor where `dname`=?");
             pstmst1 = con.prepareStatement(q1);
 
