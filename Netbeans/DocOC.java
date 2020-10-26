@@ -1,4 +1,4 @@
-
+//DocOC.java allows to doctors to provide online consultation for the patients with the given patient details
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.DriverManager;
