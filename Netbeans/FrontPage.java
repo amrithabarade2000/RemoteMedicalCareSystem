@@ -1,3 +1,4 @@
+//FrontPage.java allows the patient/doctor to login/register
 public class FrontPage extends javax.swing.JFrame {
 
     public FrontPage() {
