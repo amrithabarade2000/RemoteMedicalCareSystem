@@ -1,4 +1,4 @@
-
+//DoctorLogin.java allows the user to login by entering the username and password.
 import java.sql.*;
 import javax.swing.JOptionPane;
 
