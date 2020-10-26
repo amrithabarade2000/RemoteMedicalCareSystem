@@ -1,4 +1,4 @@
-
+//CancelApp.java allows the user to cancel an appointment by selecting the booked appointment from the appointment table and deleting the record
 import java.awt.HeadlessException;
 import java.sql.Connection;
 import java.sql.Date;
