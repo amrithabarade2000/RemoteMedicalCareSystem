@@ -1,3 +1,4 @@
+//DoctorView.java is the page that is displayed to the doctor, when he/she logins. The doctor can view the patient details and provide consultation
 public class DoctorView extends javax.swing.JFrame {
 
     public DoctorView() {
